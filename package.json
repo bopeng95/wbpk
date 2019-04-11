@@ -1,0 +1,33 @@
+{
+  "name": "wbpk",
+  "version": "1.0.0",
+  "description": "simple lightweight webpack + react starter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bopeng95/wbpk.git"
+  },
+  "author": "Bo Peng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bopeng95/wbpk/issues"
+  },
+  "homepage": "https://github.com/bopeng95/wbpk#readme",
+  "keywords": [],
+  "preferGlobal": true,
+  "bin": {
+    "wbpk": "./index.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "execa": "^1.0.0",
+    "fs-extra": "^7.0.1",
+    "inquirer": "^6.2.2",
+    "jsonfile": "^5.0.0",
+    "listr": "^0.14.3",
+    "read-pkg": "^5.0.0"
+  }
+}
