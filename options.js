@@ -19,41 +19,48 @@ const production = 'webpack --env.NODE_ENV=production';
 module.exports = {
     end: (ctx) => {
         if(ctx.test === false) return;
-        log(chalk.green(`Completed installation`));
-        log(chalk.cyan(`run 'npm run dev' to start development!\n`));
+        log(`\nCompleted installation`);
+        log(`run ${chalk.bold.cyan('npm run dev')} to start development!\n`);
     },
     tasks: [
         {
             title: 'checking if package.json exists',
             task: (ctx, task) => {
-                try { ctx.test = true; readPkg.sync(); }
-                catch(err) { ctx.test = false; task.skip(chalk.red('no package.json in current working directory. please npm init first.')); }
+                try { ctx.test = true; ctx.file = readPkg.sync(); }
+                catch(err) { 
+                    ctx.test = false; 
+                    task.skip('No package.json in current working directory. please npm init first.'); 
+                }
             }
         },
         {
             title: 'installing dev and local dependencies',
             enabled: ctx => ctx.test === true,
-            task: () => {
-                return new Listr([
-                    {
-                        title: 'installing dependencies',
-                        task: () => execa('npm', dep)
-                    },
-                    {
-                        title: 'installing devdependencies',
-                        task: () => execa('npm', dev)
-                    }
-                ], { concurrently: true });
+            task: (ctx, task) => {
+                if(ctx.file.dependencies && ctx.file.devDependencies) {
+                    ctx.test = false;
+                    task.skip('package.json cannot have any kind of dependencies.')
+                } else {
+                    return new Listr([
+                        {
+                            title: 'installing dependencies',
+                            task: () => execa('npm', dep)
+                        },
+                        {
+                            title: 'installing devDependencies',
+                            task: () => execa('npm', dev)
+                        }
+                    ], { concurrently: true });
+                }
             }
         },
         {
             title: 'modifying package scripts',
             enabled: ctx => ctx.test === true,
-            task: () => {
-                const file = readPkg.sync();
-                file.scripts.dev = development;
-                file.scripts.build = production;
-                jsonfile.writeFileSync(path.join(process.cwd(), 'package.json'), file, { spaces: 2 });
+            task: (ctx) => {
+                ctx.file.scripts.dev = development;
+                ctx.file.scripts.build = production;
+                jsonfile.writeFileSync(path.join(process.cwd(), 'package.json'), ctx.file, { spaces: 2 });
             }
         },
         {
