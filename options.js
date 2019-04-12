@@ -18,7 +18,7 @@ const production = 'webpack --env.NODE_ENV=production';
 
 module.exports = {
     end: (ctx) => {
-        if(ctx.test === false) return;
+        if(ctx.test === false) return log(`\nIncomplete\n`);
         log(`\nCompleted installation`);
         log(`run ${chalk.bold.cyan('npm run dev')} to start development!\n`);
     },
