@@ -16,7 +16,10 @@
     "url": "https://github.com/bopeng95/wbpk/issues"
   },
   "homepage": "https://github.com/bopeng95/wbpk#readme",
-  "keywords": [],
+  "keywords": [
+    "webpack",
+    "react"
+  ],
   "preferGlobal": true,
   "bin": {
     "wbpk": "./index.js"
@@ -25,7 +28,6 @@
     "chalk": "^2.4.2",
     "execa": "^1.0.0",
     "fs-extra": "^7.0.1",
-    "inquirer": "^6.2.2",
     "jsonfile": "^5.0.0",
     "listr": "^0.14.3",
     "read-pkg": "^5.0.0"
