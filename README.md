@@ -1,4 +1,4 @@
-# wbpk
+# @bopeng95/wbpk
 ![npm scoped](https://img.shields.io/badge/npm-1.0.0-orange.svg)
 
 ### simple lightweight webpack + react starter
@@ -15,7 +15,7 @@
 
 ## How to run program
 ```
-npm i -g wbpk
+npm i -g @bopeng95/wbpk
 ```
 Head over to any directory with a fresh `npm init` and let the magic happen.
 
