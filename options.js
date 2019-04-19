@@ -34,6 +34,15 @@ module.exports = {
             }
         },
         {
+            title: 'modifying package scripts',
+            enabled: ctx => ctx.test === true,
+            task: (ctx) => {
+                ctx.file.scripts.dev = development;
+                ctx.file.scripts.build = production;
+                jsonfile.writeFileSync(path.join(process.cwd(), 'package.json'), ctx.file, { spaces: 2 });
+            }
+        },
+        {
             title: 'installing dev and local dependencies',
             enabled: ctx => ctx.test === true,
             task: (ctx, task) => {
@@ -52,15 +61,6 @@ module.exports = {
                         }
                     ], { concurrently: true });
                 }
-            }
-        },
-        {
-            title: 'modifying package scripts',
-            enabled: ctx => ctx.test === true,
-            task: (ctx) => {
-                ctx.file.scripts.dev = development;
-                ctx.file.scripts.build = production;
-                jsonfile.writeFileSync(path.join(process.cwd(), 'package.json'), ctx.file, { spaces: 2 });
             }
         },
         {
