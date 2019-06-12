@@ -8,6 +8,7 @@ const webpackStr = require('./fileStrings/wbpkStr');
 const indexHTML = require('./fileStrings/indexHTML');
 const indexJS = require('./fileStrings/indexJS');
 const appJSX = require('./fileStrings/appJSX');
+const ignore = require('./fileStrings/ignore');
 const path = require('path');
 const log = console.log;
 
@@ -70,7 +71,7 @@ module.exports = {
             task: () => fse.outputFileSync(path.join(process.cwd(), 'webpack.config.js'), webpackStr)
         },
         {
-            title: 'constructing index files',
+            title: 'constructing file structure',
             enabled: ctx => ctx.test === true,
             task: () => {
                 return new Listr([
@@ -88,6 +89,10 @@ module.exports = {
                         title: 'creating index.html to current directory',
                         task: () => fse.outputFile(path.join(process.cwd(), 'index.html'), indexHTML)
                     },
+					{
+						title: 'adding .gitignore file',
+						task: () => fse.outputFileSync(path.join(process.cwd(), '.gitignore'), ignore)
+					},
                     {
                         title: `creating a 'components' folder inside src and adding App.jsx`,
                         task: (ctx) => execa('mkdir', ['src/components'])
