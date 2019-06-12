@@ -7,6 +7,6 @@ module.exports = `<html lang="en">
 </head>
 <body>
     <div id="root"></div>
-    <script src="http://localhost:8080/bundle.js" type="text/javascript"></script>
+    <script src="build/bundle.js" type="text/javascript"></script>
 </body>
 </html>`;

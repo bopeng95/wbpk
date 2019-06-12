@@ -1,12 +1,5 @@
 module.exports = `import React from 'react';
 import { render } from 'react-dom';
-
-if (module.hot) module.hot.accept();
-
-const App = () => {
-    return (
-        <div>My React App</div>
-    )
-};
+import App from './components/App.jsx';
 
 render(<App/>, document.querySelector('#root'));`;

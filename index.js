@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const Listr = require('listr');
 const chalk = require('chalk');
-const log = console.log;
+const { log } = console;
 const { tasks, end } = require('./options');
 
 const list = new Listr(tasks);

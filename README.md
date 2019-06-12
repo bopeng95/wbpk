@@ -20,14 +20,11 @@ npm i -g @bopeng95/wbpk
 Head over to any directory with a fresh `npm init` and let the magic happen.
 
 ### Things to consider
-- bundle.js is located in `http://localhost:8080/bundle.js` by the **publicPath** in **devServer**
-    - switch the src of script in index.html to `build/bundle.js` if you want to switch to production mode
 - **contentBase** is being served in root directory
     - if you want to server the html file elsewhere, just change the path in contentBase
 - **proxy** is set to port 3000 if you are using a server to fetch data
-- hot module replacement is enabled
+- react hot loader is enabled
 - **historyApiFallback** is enabled so react will be able to maintain its page through reload
-- minify and uglify of bundle.js is not yet implemented
 - import your own css files or use styled components for now
 ___
 ### Future

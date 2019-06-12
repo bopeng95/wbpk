@@ -1,5 +1,4 @@
-module.exports = `const webpack = require('webpack');
-const path = require('path');
+module.exports = `const path = require('path');
 
 module.exports = (env) => {
     return {
@@ -27,10 +26,10 @@ module.exports = (env) => {
                 }
             ]
         },
-        plugins: [new webpack.HotModuleReplacementPlugin()],
+		resolve: { alias: { 'react-dom': '@hot-loader/react-dom' } },
         devServer: {
             contentBase: path.join(__dirname),
-            publicPath: '/',
+            publicPath: '/build',
             hot: true,
             historyApiFallback: true,
             proxy: {

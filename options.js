@@ -7,10 +7,11 @@ const fse = require('fs-extra');
 const webpackStr = require('./fileStrings/wbpkStr');
 const indexHTML = require('./fileStrings/indexHTML');
 const indexJS = require('./fileStrings/indexJS');
+const appJSX = require('./fileStrings/appJSX');
 const path = require('path');
 const log = console.log;
 
-const dep = ['i', '-S', 'react', 'react-dom'];
+const dep = ['i', '-S', 'react', '@hot-loader/react-dom', 'react-hot-loader'];
 const dev = ['i', '-D', 'webpack', 'webpack-dev-server', 'webpack-cli', 'babel-loader', '@babel/core', 
             '@babel/preset-env', '@babel/preset-react', 'css-loader', 'style-loader'];
 const development = 'webpack-dev-server --env.NODE_ENV=development --open';
@@ -88,8 +89,9 @@ module.exports = {
                         task: () => fse.outputFile(path.join(process.cwd(), 'index.html'), indexHTML)
                     },
                     {
-                        title: `creating a 'components' folder inside src`,
+                        title: `creating a 'components' folder inside src and adding App.jsx`,
                         task: (ctx) => execa('mkdir', ['src/components'])
+									.then(() => fse.outputFileSync(path.join(process.cwd(), 'src/components/App.jsx'), appJSX))
                                     .catch(() => {
                                         ctx.test = false;
                                         task.skip('unable to make ./src/components directory');
