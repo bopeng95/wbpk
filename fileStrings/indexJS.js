@@ -1,5 +1,26 @@
 module.exports = `import React from 'react';
-import { render } from 'react-dom';
-import App from './components/App.jsx';
+import ReactDom from 'react-dom';
+import { ThemeProvider } from 'styled-components';
+import 'sanitize.css';
 
-render(<App/>, document.querySelector('#root'));`;
+import App from 'containers/App';
+
+import { GlobalStyle, theme } from './global-styles';
+
+const render = Component =>
+  ReactDom.render(
+    <ThemeProvider theme={theme}>
+        <Component />
+      <GlobalStyle />
+    </ThemeProvider>,
+    document.querySelector('#root'),
+  );
+
+render(App);
+
+if (module.hot) {
+  module.hot.accept('./containers/App', () => {
+    render(App);
+  });
+}
+`;

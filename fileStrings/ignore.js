@@ -3,4 +3,5 @@ module.exports = `node_modules
 
 # git fugitive files
 *.swp
-*.swo`;
+*.swo
+`;
