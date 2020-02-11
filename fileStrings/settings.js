@@ -1,4 +1,4 @@
-module.exports = `import { createGlobalStyle } from 'styled-components';
+const globalStyles = `import { createGlobalStyle } from 'styled-components';
 
 // set up personal fonts
 // https://google-webfonts-helper.herokuapp.com/fonts
@@ -57,3 +57,16 @@ export const GlobalStyle = createGlobalStyle\`
   }
 \`;
 `;
+
+const gitignore = `node_modules
+.DS_Store
+
+# git fugitive files
+*.swp
+*.swo
+`;
+
+module.exports = {
+  globalStyles,
+  gitignore,
+};
