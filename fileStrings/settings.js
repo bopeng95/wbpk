@@ -3,8 +3,8 @@ const globalStyles = `import { createGlobalStyle } from 'styled-components';
 // set up personal fonts
 // https://google-webfonts-helper.herokuapp.com/fonts
 
-const mainFont = '';
-const subFont = '';
+// const mainFont = '';
+// const subFont = '';
 
 export const theme = {
   display: {
