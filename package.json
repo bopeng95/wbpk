@@ -1,6 +1,6 @@
 {
   "name": "@bopeng95/wbpk",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "simple lightweight webpack + react starter",
   "main": "index.js",
   "scripts": {
