@@ -1,14 +1,8 @@
 # @bopeng95/wbpk
 
-![npm scoped](https://img.shields.io/badge/npm-2.1.1-orange.svg)
+![npm scoped](https://img.shields.io/badge/npm-2.1.2-orange.svg)
 
 simple lightweight webpack + react starter
-
-## Why
-
-- too many unnecessary files with create-react-app
-- no one really understands how to customize their own webpack config file to fit their needs
-- this cli tool is simply a small template to start a simple react app (add components, routers, or more dependencies yourself if needed)
 
 ## How to run program
 
